@@ -1,15 +1,21 @@
 #ifndef NICE_UI_H
 #define NICE_UI_H
 
+#include <iostream>
+#include <vector>
+
 /* Declarations */
 
-void Render()
+void Render(void);
 
 #ifdef NICE_UI_IMPLEMENTATION
 
-/* Implementation */
+/* Implementation */ 
 
+void Render()
+{
 
+}
 
 
 #endif /* NICE_UI_IMPLEMENTATION */
