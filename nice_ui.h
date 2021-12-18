@@ -1,6 +1,6 @@
 /**
  * @file nice_ui.h
- * @author Igor Alexey Marengo (you@domain.com)
+ * @author Igor Alexey Marengo (igor@vortex-dev.com)
  * @brief Nice is a single-header C++ library that allows you to create a UI for GLFW with a simple object oriented API.
  * @brief It is designed to be flexible, easy to use and easy to understand.
  * @version 1.0
