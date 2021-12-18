@@ -19,10 +19,18 @@ int main(void)
     }
     glfwMakeContextCurrent(window);
 
+    // Create a Nice_Context
+    Nice_Context* context = New_Context();
+
+    // Design interface before loop
+
     while (!glfwWindowShouldClose(window))
     {
 
         glClear(GL_COLOR_BUFFER_BIT);
+
+        // Render all UI elements
+        context->Render();
 
         glfwSwapBuffers(window);
 

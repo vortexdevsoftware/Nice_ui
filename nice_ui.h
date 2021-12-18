@@ -20,12 +20,18 @@
 
 // Structs //
 
-// Classess //
+struct Nice_Element
+{
+
+};
+
+// Classes //
 
 class Nice_Context
 {
     private:
         GLFWwindow* window;
+        std::vector<Nice_Element*> elements;
     public:
         Nice_Context();
         ~Nice_Context();
@@ -46,7 +52,6 @@ Nice_Context* New_Context(GLFWwindow* window = glfwGetCurrentContext());
 /*
 * @brief Draw all the UI elements on the current context's stack.
 */
-void Render(void);
 
 #ifdef NICE_UI_IMPLEMENTATION
 
