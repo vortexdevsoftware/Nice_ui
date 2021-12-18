@@ -1,6 +1,9 @@
 # VSCode evil jsons
 .vscode
 
+# Build folder
+.build
+
 # Prerequisites
 *.d
 

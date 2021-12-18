@@ -1,7 +1,7 @@
+#include <iostream>
 #include <GLFW/glfw3.h>
 #define NICE_UI_IMPLEMENTATION
-#include <nice_ui.h>
-#include <iostream>
+#include "nice_ui.h"
 
 int main(void)
 {
@@ -21,6 +21,7 @@ int main(void)
 
     while (!glfwWindowShouldClose(window))
     {
+
         glClear(GL_COLOR_BUFFER_BIT);
 
         glfwSwapBuffers(window);
