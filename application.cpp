@@ -1,4 +1,5 @@
 #include <GLFW/glfw3.h>
+#define NICE_UI_IMPLEMENTATION
 #include <nice_ui.h>
 #include <iostream>
 
@@ -16,7 +17,6 @@ int main(void)
         glfwTerminate();
         return -1;
     }
-
     glfwMakeContextCurrent(window);
 
     while (!glfwWindowShouldClose(window))
