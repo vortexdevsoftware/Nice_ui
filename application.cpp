@@ -26,7 +26,9 @@ int main(void)
 
     while (!glfwWindowShouldClose(window))
     {
-
+        // Update UI
+        context->Update();
+        
         glClear(GL_COLOR_BUFFER_BIT);
 
         // Render all UI elements
@@ -36,7 +38,7 @@ int main(void)
 
         glfwPollEvents();
     }
-
+    context->Destroy();
     glfwTerminate();
     return 0;
 }

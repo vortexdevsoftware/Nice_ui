@@ -27,17 +27,23 @@ struct Nice_Element
 
 // Classes //
 
+/**
+ * @brief Nice_Context is a container for all UI elements and context-related for a single window
+ * Nice_Context is a container for all UI elements and context-related for a single window, it should be created using New_Context()
+ * and Destroyed using context->Destroy();
+ */
 class Nice_Context
 {
     private:
         GLFWwindow* window;
         std::vector<Nice_Element*> elements;
+        
     public:
         Nice_Context();
         ~Nice_Context();
-        void Update();
-        void Render();
-        void Destroy();
+        void Update(); // Update all UI elements, should be called once per frame.
+        void Render(); // Draw all the UI elements on the context's stack.
+        void Destroy(); // Destroy the context and all its elements from memory.
 };
 
 // Functions //
@@ -49,15 +55,12 @@ class Nice_Context
 */
 Nice_Context* New_Context(GLFWwindow* window = glfwGetCurrentContext());
 
-/*
-* @brief Draw all the UI elements on the current context's stack.
-*/
+Nice_Context* Get_Current_Context();
 
 #ifdef NICE_UI_IMPLEMENTATION
 
 /* Implementation Code */ 
 
-// Define Update from Nice_Context class
 void Nice_Context::Update()
 {
     // Update all UI elements
