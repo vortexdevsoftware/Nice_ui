@@ -79,6 +79,11 @@ void Nice_Context::Render()
     }
 }
 
+void Nice_Context::Destroy()
+{
+    delete this;
+}
+
 
 #else
 #warning "Nice_UI is included but not implemented, you should define NICE_UI_IMPLEMENTATION before including this file."
