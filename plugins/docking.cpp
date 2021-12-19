@@ -14,4 +14,3 @@
 #define NICE_UI_DECLARATIONS_ONLY
 #include "nice_ui.h"
 
-

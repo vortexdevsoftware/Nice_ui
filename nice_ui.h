@@ -86,10 +86,10 @@ class Nice_Element
 class Nice_Context
 {
     private:
-        GLFWwindow* window;
         std::vector<Nice_Element*> elements;
-        
+
     public:
+        GLFWwindow* window;
         Nice_Context();
         ~Nice_Context();
         void Update(); // Update all UI elements, should be called once per frame.
@@ -99,16 +99,18 @@ class Nice_Context
 
 // Functions //
 
-Nice_Context* New_Context(GLFWwindow* window = glfwGetCurrentContext());
+// Create a new Nice_Context in the list of contexts, and returns a pointer to the new context.
+Nice_Context* New_Context(GLFWwindow* = glfwGetCurrentContext());
 
-Nice_Context* Get_Current_Context();
+// Get the mouse position as if the window were the display.
+Vector2 Get_Mouse_Position_Relative_To_Window(GLFWwindow* = glfwGetCurrentContext());
 
 // Only one of these should be defined at a time.
 #ifdef NICE_UI_IMPLEMENTATION ^ NICE_UI_DECLARATIONS_ONLY
 
 /* Implementation Code */ 
 
-
+std::vector<Nice_Context> Nice_Contexts;
 
 void Nice_Context::Update()
 {
@@ -132,6 +134,24 @@ void Nice_Context::Destroy()
 {
     delete this;
 }
+
+Nice_Context* New_Context(GLFWwindow* window)
+{
+    // Create new context directly inside the Nice_Contexts vector.
+    Nice_Contexts.push_back(Nice_Context());
+    Nice_Contexts.back().window = window;
+    return &Nice_Contexts.back();
+}
+
+Vector2 Get_Mouse_Position_Relative_To_Window(GLFWwindow* window)
+{
+    // Get mouse position relative to the window using glfwGetCursorPos() and return it as a Vector2
+    double x,y;
+    glfwGetCursorPos(window,&x,&y);
+    return Vector2{(float)x,(float)y};
+}
+
+/* End of Implementation */
 
 #elif !defined(NICE_UI_IMPLEMENTATION) && !defined(NICE_UI_DECLARATIONS_ONLY)
 #warning "Nice_UI is included but not implemented, you should define NICE_UI_IMPLEMENTATION or NICE_UI_DECLARATIONS_ONLY before including this file."
