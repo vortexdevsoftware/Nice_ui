@@ -57,7 +57,8 @@ Nice_Context* New_Context(GLFWwindow* window = glfwGetCurrentContext());
 
 Nice_Context* Get_Current_Context();
 
-#ifdef NICE_UI_IMPLEMENTATION
+// Only one of these should be defined at a time.
+#ifdef NICE_UI_IMPLEMENTATION ^ NICE_UI_DECLARATIONS_ONLY
 
 /* Implementation Code */ 
 
@@ -84,9 +85,10 @@ void Nice_Context::Destroy()
     delete this;
 }
 
-
-#else
+#elif !defined(NICE_UI_IMPLEMENTATION) && !defined(NICE_UI_DECLARATIONS_ONLY)
 #warning "Nice_UI is included but not implemented, you should define NICE_UI_IMPLEMENTATION before including this file."
+#elif defined(NICE_UI_IMPLEMENTATION) && defined(NICE_UI_DECLARATIONS_ONLY)
+#error "Nice_UI is included both as a declaration and an implementation, this is not supported."
 #endif /* NICE_UI_IMPLEMENTATION */
 
 #else
