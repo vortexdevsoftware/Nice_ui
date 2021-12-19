@@ -27,6 +27,7 @@
 enum class UI_ELEMENT_TYPE
 {
     FRAME,
+    IMAGE,
     BUTTON,
     TEXT_LABEL,
     TEXT_BOX,
@@ -53,7 +54,7 @@ struct Vector2
 struct UDim
 {
     float Scale; // Scale of the parent container from 0 to 1
-    unsigned int Pixels;
+    unsigned short Pixels; // Pixels of the window from 0 to a maximum of 65,535
 };
 
 struct UDim2
@@ -67,8 +68,12 @@ class Nice_Element
     private:
         UDim2 Position;
         UDim2 Size;
-        Vector2 Anchor_Point;
         std::vector<Nice_Element*> Children;
+    public:
+        Vector2 Anchor_Point = {0.0f,0.0f}; // Top-left corner of the element
+        UI_ELEMENT_TYPE Type;
+        UI_ELEMENT_STATE State;
+
 };
 
 // Classes //
