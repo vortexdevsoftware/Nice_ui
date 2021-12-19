@@ -14,3 +14,7 @@
 *   🖥️ DPI Aware interface this means that when properly using screen-size based size values your elements should scale properly to many other resolutions.
 *   📀 GLSL Shader support, if you require spicing-up your interface for your project.
 *   🗔 Easily extensible framework. See <a href="plugins">Plugins</a>.
+
+<h2 align="center">⇩ Integrating it in my project</h2>
+To integrate it in your GLFW project, simply put <a href="nice_ui.h">nice_ui.h</a> in your project's include folder.
+See <a href="nice_ui_demo.cpp">nice_ui_demo.cpp</a> for a good example on how to use it.
