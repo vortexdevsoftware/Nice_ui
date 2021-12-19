@@ -10,5 +10,5 @@
 <p style="text-align:center">Here are some of the project's best features:</p>
 
 *   📝 Simple to use without any hidden surprises and focused towards expected behavior.
-*   🧱 Object-Oriented architecture; This means there is no need for creating the same element once every single frame just design the interface before the main loop and use Context->Render() to draw it.
-*   🖥️ DPI Aware interface this means that when properly using screen-size based size values your elements should scale properly to many other resolutions.
+*   🧱 Object-Oriented architecture; This means there is no need for creating the same element once every single frame, just design the interface before the main loop and use Context->Render() to draw it.
+*   🖥️ DPI Aware interface this means that when properly using screen-size based size values, your elements should scale properly to many other monitor resolutions.
