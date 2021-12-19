@@ -19,7 +19,7 @@ int main(void)
     }
     glfwMakeContextCurrent(window);
 
-    // Create a Nice_Context
+    // Create a Nice_UI Context
     Nice_Context* context = New_Context();
 
     // Design interface before loop
