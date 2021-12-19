@@ -22,7 +22,7 @@
 
 /* Declarations */
 
-// Enums//
+// Enums //
 
 enum class UI_ELEMENT_TYPE
 {
