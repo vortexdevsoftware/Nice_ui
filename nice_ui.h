@@ -86,7 +86,7 @@ class Nice_Element
 class Nice_Context
 {
     private:
-        std::vector<Nice_Element*> elements;
+        std::vector<Nice_Element> elements;
 
     public:
         GLFWwindow* window;
@@ -115,18 +115,18 @@ std::vector<Nice_Context> Nice_Contexts;
 void Nice_Context::Update()
 {
     // Update all UI elements
-    for (auto& element : elements)
+    for (Nice_Element element : elements)
     {
-        //element->Update();
+        
     }
 }
 
 void Nice_Context::Render()
 {
     // Render all UI elements
-    for (auto& element : elements)
+    for (Nice_Element element : elements)
     {
-        //element->Render();
+        
     }
 }
 

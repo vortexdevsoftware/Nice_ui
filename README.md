@@ -17,6 +17,7 @@
 
 <h2 align="center">⌨️ Integrating it</h2>
 To integrate it in your GLFW project, simply:
+
 <ol>
     <li> Put <a href="nice_ui.h">nice_ui.h</a> in your project's include folder.</li>
     <li> Add #define NICE_UI_IMPLEMENTATION <b>before</b> using #include "nice_ui.h".</li>
