@@ -107,7 +107,7 @@ class Nice_Context
 // Create a new Nice_Context in the list of contexts, and returns a pointer to the new context.
 Nice_Context* New_Context(GLFWwindow* = glfwGetCurrentContext());
 
-// Get the mouse position as if the window were the display.
+// Get the mouse position inside the window
 Vector2 Get_Mouse_Position_Relative_To_Window(GLFWwindow* = glfwGetCurrentContext());
 
 // Only one of these should be defined at a time.
