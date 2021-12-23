@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://socialify.git.ci/vortexdevsoftware/Nice_ui/image?description=1&font=Source%20Code%20Pro&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fvortexdevsoftware%2FNice_ui%2Fmain%2Fmedia%2Flogo_vector.png&name=1&owner=1&pattern=Solid&theme=Dark" alt="project-image"></p>
 
-<p align="center" id="description">A feature-rich single header C++ interface system for <a href="https://www.glfw.org/">GLFW</a></p>
+<p align="center" id="description">A modern, feature-rich single header C++ interface system for <a href="https://www.glfw.org/">GLFW</a></p>
 <p align="center"><img src="https://img.shields.io/github/license/vortexdevsoftware/Nice_ui?color=lightgrey&style=for-the-badge" alt="shields"> <img src="https://img.shields.io/github/stars/vortexdevsoftware/Nice_ui?style=for-the-badge" alt="shields"> <img src="https://img.shields.io/github/forks/vortexdevsoftware/Nice_ui?color=yellow&amp;style=for-the-badge" alt="shields"></p>
 
 <h2 align="center">💡 Features</h2>
@@ -24,3 +24,6 @@ To integrate it in your GLFW project, simply:
     <li> Create a context with New_Context().</li>
 </ol>
 See <a href="nice_ui_demo.cpp">nice_ui_demo.cpp</a> for a good example on how to use it.
+
+<h2 align="center">📄 Documentation</h2>
+See the wiki for all sorts of documentation about using Nice_UI.

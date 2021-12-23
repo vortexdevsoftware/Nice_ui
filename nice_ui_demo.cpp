@@ -21,10 +21,11 @@ int main(void)
 
     // Create a Nice_UI Context
     Nice_Context* context = New_Context();
+    Nice_Frame* frame = context->AddFrame("Nice_UI Example");
 
     // Design interface before loop
 
-    context->AddElement(UI_ELEMENT_TYPE::FRAME, "Welcome Window");
+    
 
     while (!glfwWindowShouldClose(window))
     {
@@ -36,7 +37,7 @@ int main(void)
         // Render all UI elements
         context->Render();
 
-        glfwSwapBuffers(window);
+        glfwSwapBuffers(window);    
 
         glfwPollEvents();
     }

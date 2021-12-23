@@ -74,32 +74,70 @@ struct UDim2
     UDim X,Y;
 };
 
+struct ElementPack
+{
+    std::vector<Nice_Frame> Frames;
+    std::vector<Nice_Image> Images;
+};
+
+
 // Classes //
 
 class Nice_Frame
 {
-    private:
-        std::vector<Nice_Frame*> Frame_Children;
     public:
+        ElementPack Children;
         std::string Name;
+        bool Visible;
+        int ZIndex;
         UDim2 Position;
         UDim2 Size;
         Vector2 Anchor_Point;
         Vector4 Background_Color;
+        UI_ELEMENT_STATE State;
         Nice_Frame() {Name = "Frame"; Position = {0.0f,0.0f}; Size = {100.0f,100.0f}; Anchor_Point = {0.0f,0.0f}; Background_Color = {1.0f,1.0f,1.0f,0.0f};}
+        virtual void AddElement(UI_ELEMENT_TYPE, std::string, Nice_Frame*);
+        virtual void AddElement(UI_ELEMENT_TYPE, std::string, Nice_Image*);
+        virtual void AddElement(UI_ELEMENT_TYPE, std::string, Nice_Button*);
+        virtual ElementPack* GetChildren();
 };
 
-class Nice_Element
+class Nice_Image
 {
-    private:
+    ElementPack Children;
+    std::string Name;
+    bool Visible;
+    int ZIndex;
+    UDim2 Position;
+    UDim2 Size;
+    Vector2 Anchor_Point;
+    Vector4 Background_Color;
+    Vector4 Image_Color;
+    UI_ELEMENT_STATE State;
+    Nice_Image() {Name = "Image"; Position = {0.0f,0.0f}; Size = {100.0f,100.0f}; Anchor_Point = {0.0f,0.0f}; Background_Color = {1.0f,1.0f,1.0f,0.0f}; Image_Color = {1.0f,1.0f,1.0f,1.0f};}
+    virtual void AddElement(UI_ELEMENT_TYPE, std::string, Nice_Frame*);
+    virtual void AddElement(UI_ELEMENT_TYPE, std::string, Nice_Image*);
+    virtual void AddElement(UI_ELEMENT_TYPE, std::string, Nice_Button*);
+    virtual ElementPack* GetChildren();
+};
+
+class Nice_Button
+{
+    public:
+        ElementPack Children;
+        std::string Name;
+        bool Visible;
+        int ZIndex;
         UDim2 Position;
         UDim2 Size;
-        std::vector<Nice_Element*> Children;
-    public:
-        Vector2 Anchor_Point = {0.0f,0.0f}; // Top-left corner of the element
-        UI_ELEMENT_TYPE Type;
+        Vector2 Anchor_Point;
+        Vector4 Background_Color;
         UI_ELEMENT_STATE State;
-
+        Nice_Button() {Name = "Button"; Position = {0.0f,0.0f}; Size = {100.0f,100.0f}; Anchor_Point = {0.0f,0.0f}; Background_Color = {1.0f,1.0f,1.0f,0.0f};}
+        virtual void AddElement(UI_ELEMENT_TYPE, std::string, Nice_Frame*);
+        virtual void AddElement(UI_ELEMENT_TYPE, std::string, Nice_Image*);
+        // Skipping AddElement(UI_ELEMENT_TYPE, std::string, Nice_Button*); since there is no reason to add a button in a button.
+        virtual ElementPack* GetChildren();
 };
 
 /**
@@ -110,11 +148,11 @@ class Nice_Element
 class Nice_Context
 {
     private:
-        std::vector<Nice_Element> elements;
+        std::vector<Nice_Frame> elements;
 
     public:
         GLFWwindow* window;
-        void AddElement(UI_ELEMENT_TYPE, const char*); // Create a child element of the given type
+        virtual Nice_Frame* AddFrame(std::string);
         void Update(); // Process input and update all UI elements.
         void Render(); // Render all UI elements.
         void Destroy(); // Destroy this Nice_Context and all its elements.
@@ -141,27 +179,25 @@ std::vector<Nice_Context> Nice_Contexts;
  * @param UI_ELEMENT_TYPE
  * @param name 
  */
-void Nice_Context::AddElement(UI_ELEMENT_TYPE type, const char* name)
+Nice_Frame* Nice_Context::AddFrame(std::string name)
 {
-    
+    // create a new frame in the elements vector with the name, and return it
+    Nice_Frame* frame = new Nice_Frame();
+    frame->Name = name;
+    elements.push_back(*frame);
+    return frame;
+
 }
 
 void Nice_Context::Update()
 {
-    // Update all UI elements
-    for (Nice_Element element : elements)
-    {
-        
-    }
+
 }
 
 void Nice_Context::Render()
 {
     // Render all UI elements
-    for (Nice_Element element : elements)
-    {
-        
-    }
+
 }
 
 void Nice_Context::Destroy()
