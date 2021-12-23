@@ -1,5 +1,5 @@
 #include <iostream>
-#include <GLFW/glfw3.h>
+#include "GLFW/glfw3.h"
 #define NICE_UI_IMPLEMENTATION
 #include "nice_ui.h"
 
