@@ -11,11 +11,17 @@
 */
 
 #ifndef __cplusplus
-#error "Nice_UI is a C++ header file. Please use C++ to compile it."
+#error "Nice_UI is a C++ header file. You should use C++ in order to compile it."
 #endif
 
 #ifndef NICE_UI_H
 #define NICE_UI_H
+
+#ifndef _glfw3_h_
+#error "GLFW must be included before Nice_UI!"
+#endif
+
+/* Includes */
 
 #include <iostream>
 #include <vector>
