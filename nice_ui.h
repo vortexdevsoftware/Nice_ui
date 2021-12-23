@@ -10,15 +10,16 @@
  * 
 */
 
-#ifndef __cplusplus
+#if !defined(__cplusplus)
 #error "Nice_UI is a C++ header file. You should use C++ in order to compile it."
 #endif
 
-#ifndef NICE_UI_H
+#if !defined(NICE_UI_H)
 #define NICE_UI_H
 
-#ifndef _glfw3_h_
-#error "GLFW must be included before Nice_UI!"
+#if !defined(_glfw3_h_)
+#warning "It's recommended to include GLFW before Nice_UI."
+#include "GLFW/glfw3.h"
 #endif
 
 /* Includes */
@@ -96,11 +97,9 @@ class Nice_Context
 
     public:
         GLFWwindow* window;
-        Nice_Context();
-        ~Nice_Context();
-        void Update(); // Update all UI elements, should be called once per frame.
-        void Render(); // Draw all the UI elements on the context's stack.
-        void Destroy(); // Destroy the context and all its elements from memory.
+        void Update();
+        void Render();
+        void Destroy(); 
 };
 
 // Functions //
@@ -112,7 +111,7 @@ Nice_Context* New_Context(GLFWwindow* = glfwGetCurrentContext());
 Vector2 Get_Mouse_Position_Relative_To_Window(GLFWwindow* = glfwGetCurrentContext());
 
 // Only one of these should be defined at a time.
-#ifdef NICE_UI_IMPLEMENTATION ^ NICE_UI_DECLARATIONS_ONLY
+#if defined(NICE_UI_IMPLEMENTATION) ^ defined(NICE_UI_DECLARATIONS_ONLY)
 
 /* Implementation Code */ 
 
