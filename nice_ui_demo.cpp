@@ -24,6 +24,8 @@ int main(void)
 
     // Design interface before loop
 
+    context->AddElement(UI_ELEMENT_TYPE::FRAME, "Welcome Window");
+
     while (!glfwWindowShouldClose(window))
     {
         // Update UI

@@ -54,14 +54,19 @@ enum class UI_ELEMENT_STATE
 
 struct Vector2
 {
-    float x;
-    float y;
+    float x, y;
+};
+
+struct Vector4
+{
+    float x, y, z, w;
 };
 
 struct UDim
 {
-    float Scale; // Scale of the parent container from 0 to 1
-    unsigned short Pixels; // Pixels of the window from 0 to a maximum of 65,535
+    float
+    Scale, // Scale of the parent container from 0 to 1
+    Pixels; // Pixels of the window from 0 to a maximum of 65,535
 };
 
 struct UDim2
@@ -69,6 +74,20 @@ struct UDim2
     UDim X,Y;
 };
 
+// Classes //
+
+class Nice_Frame
+{
+    private:
+        std::vector<Nice_Frame*> Frame_Children;
+    public:
+        std::string Name;
+        UDim2 Position;
+        UDim2 Size;
+        Vector2 Anchor_Point;
+        Vector4 Background_Color;
+        Nice_Frame() {Name = "Frame"; Position = {0.0f,0.0f}; Size = {100.0f,100.0f}; Anchor_Point = {0.0f,0.0f}; Background_Color = {1.0f,1.0f,1.0f,0.0f};}
+};
 
 class Nice_Element
 {
@@ -83,8 +102,6 @@ class Nice_Element
 
 };
 
-// Classes //
-
 /**
  * @brief Nice_Context is a container for all UI elements and context-related for a single window
  * Nice_Context is a container for all UI elements and context-related funtions for a single window, it should be created using New_Context()
@@ -97,9 +114,10 @@ class Nice_Context
 
     public:
         GLFWwindow* window;
-        void Update();
-        void Render();
-        void Destroy(); 
+        void AddElement(UI_ELEMENT_TYPE, const char*); // Create a child element of the given type
+        void Update(); // Process input and update all UI elements.
+        void Render(); // Render all UI elements.
+        void Destroy(); // Destroy this Nice_Context and all its elements.
 };
 
 // Functions //
@@ -116,6 +134,17 @@ Vector2 Get_Mouse_Position_Relative_To_Window(GLFWwindow* = glfwGetCurrentContex
 /* Implementation Code */ 
 
 std::vector<Nice_Context> Nice_Contexts;
+
+/**
+ * @brief Create a new element inside the context.
+ * Create a new element of specified type and name (which is not an unique identifier) inside the context.
+ * @param UI_ELEMENT_TYPE
+ * @param name 
+ */
+void Nice_Context::AddElement(UI_ELEMENT_TYPE type, const char* name)
+{
+    
+}
 
 void Nice_Context::Update()
 {
