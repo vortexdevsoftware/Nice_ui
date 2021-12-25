@@ -26,4 +26,4 @@ To integrate it in your GLFW project, simply:
 See <a href="nice_ui_demo.cpp">nice_ui_demo.cpp</a> for a good example on how to use it.
 
 <h2 align="center">📄 Documentation</h2>
-See the wiki for all sorts of documentation about using Nice_UI.
+See the wiki for all sorts of documentation regarding Nice_UI.
