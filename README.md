@@ -21,7 +21,7 @@ To integrate it in your GLFW project, simply:
 <ol>
     <li> Place <a href="nice_ui.h">nice_ui.h</a> in your project's include folder.</li>
     <li> Add #define NICE_UI_IMPLEMENTATION <b>before</b> using #include "nice_ui.h".</li>
-    <li> Create a context with New_Context().</li>
+    <li> Create a context with new Nice_Context().</li>
 </ol>
 See <a href="nice_ui_demo.cpp">nice_ui_demo.cpp</a> for a good example on how to use it.
 

@@ -62,7 +62,7 @@ int main(void)
 
         glfwPollEvents();
     }
-    //context->Destroy();
+    context->Destroy();
     glfwTerminate();
     return 0;
 }
