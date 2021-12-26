@@ -21,14 +21,16 @@ int main(void)
 
     // Create a Nice_UI Context
     Nice_Context* context = new Nice_Context();
-    Nice_Frame* frame, topbar;
-    Nice_Button* closebutton, togglebutton;
-    Nice_Label* title, content;
-    /*
-    context->AddElement("Nice_UI Window", &frame);
-    frame->AddElement("Topbar", &topbar);
-    topbar->AddElement("Close Button", &closebutton);
+    Nice_Frame frame, topbar;
+    Nice_Button closebutton, togglebutton;
+    Nice_Label title, content;
 
+    context->AddElement("Nice_UI Window", frame);
+    frame->AddElement("Topbar", &topbar);
+    frame->AddElement("Togglebutton", &togglebutton);
+    topbar->AddElement("Title", &title);
+    topbar->AddElement("Close Button", &closebutton);
+    /*
     // Design interface before loop
 
     frame->Anchor_Point = Vector2{0.5f, 0.5f}; // The default anchor point is at the top left corner of the frame, this centers it to the middle.
@@ -36,12 +38,16 @@ int main(void)
     frame->Size = UDim2{0.5f, 0.0f, 0.8f, 0.0f}; //  size in Scale and offset(pixels). Offset decimals are discarded.
     frame->Background_Color = Vector4{0.1f, 0.1f, 0.1f, 1.0f}; // Dark gray background (RGBA)
 
-    Nice_Button* button = frame->AddElement(UI_ELEMENT_TYPE::BUTTON);
+    topbar->Size = {{1.0, 0.0}, {0.1, 0.0}}
+    topbar->Background_Color = {{0.2, 0.2, 0.2, 1.0}, {0.2, 0.2, 0.2, 1.0}};
 
-    button->Text = "Click me!";
-    button->Position = UDim2{0.0f, 0.0f, 0.0f, 0.0f}; // Top left corner
-    button->Size = UDim2(1.0f, 0.0f, 0.1f, 0.0f); // Full width, 10% height
-    button->Background_Color = Vector4{0.0f, 0.0f, 1.0f, 1.0f}; // Blue background (RGBA)*/
+    closebutton->Text = "X";
+    closebutton->Position = UDim2{0.0f, 0.0f, 0.0f, 0.0f}; // Top left corner
+    closebutton->Size = UDim2(1.0f, 0.0f, 0.1f, 0.0f); // Full width, 10% height
+    closebutton->Background_Color = Vector4{1.0f, 0.0f, 0.0f, 1.0f}; // Red background (RGBA)
+
+    title->Size = {{0.9},{1.0, 0.0}};
+    */
 
     while (!glfwWindowShouldClose(window))
     {
