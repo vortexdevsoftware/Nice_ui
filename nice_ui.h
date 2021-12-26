@@ -27,6 +27,11 @@
 #include <iostream>
 #include <vector>
 
+enum class UI_
+{
+    
+};
+
 struct Vector2
 {
     float x, y;
@@ -39,8 +44,8 @@ struct Vector2
  */
 struct UDim
 {
-    float Scale;
-    int Offset;
+    float scale;
+    int offset;
 };
 
 /**
@@ -55,7 +60,7 @@ struct UDim2
 
 struct RGBA
 {
-    /* data */
+    float r, g, b, a;
 };
 
 
@@ -65,8 +70,8 @@ class Nice_Context;
 class Nice_Element;
 class Nice_Frame;
 class Nice_Image;
-class Nice_Button;
 class Nice_Label;
+class Nice_Button;
 class Nice_TextField;
 
 // Only one of these should be defined at a time.
@@ -89,7 +94,7 @@ class Nice_Context {
         {
             Contexts.push_back(this);
         }
-        void AddElement(Nice_Element* element)
+        void AddElement(const char* Name, Nice_Element* element)
         {
             // create a new element and then add it to the stack, and then return a pointer to it.
 
@@ -110,19 +115,22 @@ class Nice_Context {
 /**
  * @brief Nice_Element is the base class of all UI elements.
  * @param Tags Tags are an additional way of denoting and identifying a UI element.
+ * 
  */
 class Nice_Element {
     private:
         std::vector<Nice_Element> Elements;
+        // Tags are an additional way of denoting and identifying a UI element.
         std::vector<const char*> Tags;
     public:
-        // Tags are an additional way of denoting and identifying a UI element.
-        
+        UDim2 Size = {{0.0, 100}, {0.0, 100}};
+        UDim2 Position = {{0.0f, 0}, {0.0f, 0}};
+        RGBA Color = {0,0,0,0};
         Nice_Element()
         {
             //
         }
-        void AddElement(Nice_Element* element)
+        void AddElement(const char* name, Nice_Element*& element)
         {
             
         }
@@ -131,6 +139,11 @@ class Nice_Element {
         {
             return this;
         }
+        /**
+         * @brief Adds a tag to this element.
+         * Add a custom user-given tag to this element.
+         * @param tag 
+         */
         void AddTag(const char* tag)
         {
             Tags.push_back(tag);
@@ -175,12 +188,22 @@ class Nice_Image : Nice_Frame {
 
 };
 
-class Nice_Button : Nice_Frame {
-
-};
 
 class Nice_Label : Nice_Frame {
+    private:
 
+    public:
+    const char* Text;
+};
+
+class Nice_Button : Nice_Label {
+    private:
+
+    public:
+    void OnClick()
+    {
+        //
+    }
 };
 
 class Nice_TextField : Nice_Label {
