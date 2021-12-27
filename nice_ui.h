@@ -27,9 +27,12 @@
 #include <iostream>
 #include <vector>
 
-enum class UI_
+enum class ELEMENT_STATE
 {
-    
+    NORMAL,
+    HOVER,
+    PRESSED,
+    DISABLED
 };
 
 struct Vector2
@@ -126,10 +129,8 @@ class Nice_Element {
         UDim2 Size = {{0.0, 100}, {0.0, 100}};
         UDim2 Position = {{0.0f, 0}, {0.0f, 0}};
         RGBA Color = {0,0,0,0};
-        Nice_Element()
-        {
-            //
-        }
+        bool Visible = true;
+
         void AddElement(const char* name, Nice_Element*& element)
         {
             
@@ -176,7 +177,7 @@ class Nice_Element {
 
 };
 
-class Nice_Frame : Nice_Element {
+class Nice_Frame : public Nice_Element {
     private:
 
     public:
@@ -184,19 +185,19 @@ class Nice_Frame : Nice_Element {
 
 };
 
-class Nice_Image : Nice_Frame {
+class Nice_Image : public Nice_Frame {
 
 };
 
 
-class Nice_Label : Nice_Frame {
+class Nice_Label : public Nice_Frame {
     private:
 
     public:
     const char* Text;
 };
 
-class Nice_Button : Nice_Label {
+class Nice_Button : public Nice_Label {
     private:
 
     public:
@@ -206,7 +207,7 @@ class Nice_Button : Nice_Label {
     }
 };
 
-class Nice_TextField : Nice_Label {
+class Nice_TextField : public Nice_Label {
 
 };
 
