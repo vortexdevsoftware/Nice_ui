@@ -95,7 +95,7 @@ class Nice_Context {
     public:
         Nice_Context()
         {
-            Contexts.push_back(this);
+            Contexts.emplace_back(this);
         }
         void AddElement(const char* Name, Nice_Element* element)
         {
